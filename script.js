@@ -1,34 +1,39 @@
-async function meowData(){
-    let res = await fetch("https://meowfacts.herokuapp.com/?count=10")
-    let value = await res.json()
-    let data = value.data
+async function apiCall(){
+    try{
+    let api_response = await fetch("https://www.amiiboapi.com/api/amiibo/")
+    let api_content = await api_response.json()
+    let amiibo_data = api_content.amiibo
 
-    let contnr = document.createElement("container")
-    contnr.className = "container"
+    console.log(amiibo_data)
+
+    let parent_div = document.createElement("div")
+    parent_div.className = "par_div"
+
+    let container = document.createElement("container")
+    container.className="container"
+
     let row = document.createElement("row")
-    row.className="row"
+    row.className = "row"
+    
+    for(let i=0;i<amiibo_data.length;i++){
+        let col = document.createElement("col-md-4")
+        col.className = "col"
+        col.innerHTML = `<div class="card mb-3">
+        <div class="card-body">
+        <h3 class="card-title">${amiibo_data[i].amiiboSeries}</h3>
+        <p class="card-text">Character: ${amiibo_data[i].character} <br>
+        </p>
+        </div>
+            <img src=${amiibo_data[i].image} class="card-img-bottom" alt="">
+        </div>`
 
-
-    console.log(data)
-    for(var i=0;i<value.data.length;i++){
-        console.log(data[i])
-        var col = document.createElement("div")
-        col.className = "col-md-5"
-        col.innerHTML = `<div class="card bg-primary text-white text-center p-3" style="margin:10px; font-size:10px">
-        <blockquote class="blockquote mb-0">
-          <p>${data[i]}</p>
-          <footer class="blockquote-footer text-white">
-            <small>
-              <cite title="Meow">Meow</cite>Facts
-            </small>
-          </footer>
-        </blockquote>
-      </div>`
-
-      row.appendChild(col)
-      contnr.appendChild(row)
-      document.body.append(contnr)
+        row.appendChild(col)
+        container.appendChild(row)
+        document.body.append(parent_div,container)
+        }
+    }catch(error){
+        console.log(error)
     }
 }
 
-meowData()
+apiCall()
