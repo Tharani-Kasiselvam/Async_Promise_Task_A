@@ -1,8 +1,10 @@
 .card{
     width:300px;
-    height:300px
+    height:330px
 }
-
+.card-title{
+    text-align: center;
+}
 .card-img-bottom{
     width:300px;
     height:200px

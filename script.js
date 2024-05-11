@@ -20,8 +20,9 @@ async function apiCall(){
         col.className = "col"
         col.innerHTML = `<div class="card mb-3">
         <div class="card-body">
-        <h3 class="card-title">${amiibo_data[i].amiiboSeries}</h3>
+        <h5 class="card-title">${amiibo_data[i].amiiboSeries}</h5>
         <p class="card-text">Character: ${amiibo_data[i].character} <br>
+        <small class="text-muted">Game series: ${amiibo_data[i].gameSeries}</small><br>
         </p>
         </div>
             <img src=${amiibo_data[i].image} class="card-img-bottom" alt="">
