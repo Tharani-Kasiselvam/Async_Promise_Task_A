@@ -4,7 +4,7 @@
 By accessing the *AmiiboAPI*, we have to display the Amiibo series and the Characters along with image using HTML,CSS,Bootstrap,Javascript
 
 ***Design:***   
-- Data fetched from API   
+- Data fetched from API [https://www.amiiboapi.com/api/amiibo/]   
 - CSS styles with Class selector   
 - Bootstrap Card to display the contents  
 
